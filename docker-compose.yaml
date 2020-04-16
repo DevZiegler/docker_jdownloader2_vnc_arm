@@ -1,0 +1,19 @@
+version: '2.3'
+services:
+  jdownloader2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./data/cfg:/opt/jdownloader2/cfg
+      - ./data/downloads:/root/downloads
+    restart: always
+    network_mode: bridge
+    hostname: jdownloader2
+    ports:
+      - "6000:5900" # VNC
+      # - "3129:3129" # MyJdownloader
+    environment:
+      - RESOLUTION=800x600
+      - VNC_PASSWORD=jdownloader2
+      - PASSWORD=jdownloader2
